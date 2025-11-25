@@ -106,12 +106,17 @@ Create high-performing links with
       <tr>
         <th className="text-left px-4 py-2 font-semibold text-gray-700">Short Link</th>
         <th className="text-left px-4 py-2 font-semibold text-gray-700">Original URL</th>
+        <th className="text-left px-4 py-2 font-semibold text-gray-700">Total clicks</th>
+        <th className="text-left px-4 py-2 font-semibold text-gray-700">Last clicked time</th>
+     
         <th className="text-left px-4 py-2 font-semibold text-gray-700">Actions</th>
       </tr>
     </thead>
 
     <tbody>
       <tr className="border-t">
+        <td className="px-4 py-2 text-blue-600">http://nmm</td>
+        <td className="px-4 py-2 text-gray-700">jjkk//jkj</td>
         <td className="px-4 py-2 text-blue-600">http://nmm</td>
         <td className="px-4 py-2 text-gray-700">jjkk//jkj</td>
         <td className="px-4 py-2 flex gap-4">
