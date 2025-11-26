@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faCalendar, faLink, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom'
+import { faArrowLeft, faCalendar, faClock, faLink, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate, useParams } from 'react-router-dom'
+import { viewSingleLinksAPI } from './services/allAPI'
 
 function StatsPage() {
   const navigate=useNavigate()
+  const {code} = useParams()
+  const [viewData,setViewData]=useState({})
+ 
+useEffect(() => {
+  if (code) viewStats();
+}, [code]); 
+
+ const viewStats = async ( ) => {
+   try {
+     const result = await viewSingleLinksAPI(code);
+     if (result.status == 200) {
+   setViewData(result.data)
+     } 
+   } catch (err) {
+     console.log(err);
+   }
+ };
+
   return (
     <>
 <Header/>
@@ -34,7 +53,7 @@ function StatsPage() {
         />
         <span className="text-gray-600">Total Clicks</span>
       </div>
-      <p className="text-3xl font-bold">42</p>
+      <p className="text-3xl font-bold">{viewData.totalClicks}</p>
     </div>
 
     <div className="w-64 bg-white shadow rounded-2xl p-4">
@@ -45,9 +64,15 @@ function StatsPage() {
         />
         <span className="text-gray-600">Target URL</span>
       </div>
-      <p className="text-blue-600 font-medium">https://react.dev</p>
+      <p className="text-blue-600 font-medium"> <a 
+    href={`${viewData.originalUrl}`} 
+    target="_blank" 
+    className="text-blue-600 underline"
+  >{viewData.shortCode}</a>
+  </p>
     </div>
 
+ 
     <div className="w-64 bg-white shadow rounded-2xl p-4">
       <div className="flex items-center gap-3 mb-2">
         <FontAwesomeIcon
@@ -56,7 +81,18 @@ function StatsPage() {
         />
         <span className="text-gray-600">Last Clicked</span>
       </div>
-      <p className="font-medium">11/25/2025, 1:24:55 PM</p>
+      <p className="font-medium">{viewData.lastClicked}</p>
+    </div>
+    
+    <div className="w-64 bg-white shadow rounded-2xl p-4">
+      <div className="flex items-center gap-3 mb-2">
+        <FontAwesomeIcon
+          icon={faClock}
+          className="text-pink-900"
+        />
+        <span className="text-gray-600">Created At</span>
+      </div>
+      <p className="font-medium">{viewData.createdAt}</p>
     </div>
 
   </div>
