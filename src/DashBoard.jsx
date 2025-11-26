@@ -15,33 +15,52 @@ function DashBoard() {
   const [links, setLinks] = useState([]);
 
 
-  const createUrl = async () => {
-    const { originalUrl } = url;
-    // Validate input
-    if (!originalUrl || originalUrl.trim() === "") {
-      alert("Please enter a valid URL");
+//page load
+  useEffect(() => {
+    fetchLinks(); 
+  }, []);
+
+
+ const createUrl = async () => {
+  const { originalUrl } = url;
+
+  // Validate input
+  if (!originalUrl || originalUrl.trim() === "") {
+    alert("Please enter a valid URL");
+    return;
+  }
+
+  if (originalUrl.length > 6) {
+    // Check http or https
+    if (!originalUrl.startsWith("http://") && !originalUrl.startsWith("https://")) {
+      alert("URL must start with http:// or https://");
       return;
+    } else {
+      try {
+        const response = await createUrlAPI({ originalUrl });
+        if (response.status == 409) {
+          const short = response.data.data.shortCode;
+          setShortUrl(short);
+          alert("Short URL already exists: " + short);
+        } 
+        else if (response.status == 200) {
+          const short = response.data.data.shortCode;
+          setShortUrl(short);
+          alert("Short URL created: " + short);
+        } 
+        else {
+          alert("Something went wrong");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Server error");
+      }
     }
-    try {
-      const response = await createUrlAPI({ originalUrl });
-      if (response.status == 409) {
-        const short = response.data.data.shortCode;
-        setShortUrl(short);
-        alert("Short URL already exists: " + short);
-      }
-      else if (response.status == 200) {
-        const short = response.data.data.shortCode;
-        setShortUrl(short);
-        alert("Short URL created: " + short);
-      }
-      else {
-        alert("Something went wrong");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Server error");
-    }
-  };
+  } else {
+    alert("Enter a URL with long url");
+  }
+};
+
 
   //fetch links ---
   const fetchLinks = async () => {
@@ -54,10 +73,7 @@ function DashBoard() {
       console.error("Error fetching links:", err);
     }
   };
-//page load
-  useEffect(() => {
-    fetchLinks(); 
-  }, []);
+
 
 
 //delete links

@@ -1,16 +1,32 @@
-# React + Vite
+                              TINY LINK 
+---------------------------------------------------------------------------
+Website we can make large link to small links
+user can input their large url then get small url 
+also they can see the created link time and the link Statistics
+user can delete their links 
+website created using "REACT JS + NODE JS + MONGO DB"
+---------------------------------------------------------------------------
+frontend
+    ---------
+    1 create project  using  npm vite@latest tinylink -- --template react
+    2 install packages - react router dom , axios 
+    3 create components 
+    4 design   UI using css tailwind css
+    5 create a folder named services for api calls and used to connect backend 
+    6 create controller function for api call then make routes for corespondent controllers 
+    7 after backend deployment using render. replace that server url to  render given url
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Backend
+    -------
+    1. create backend folder then create package.json using- npm init -y
+    2. install package express cors dotenv mongoose(for connect backend with mongoDb) and nanoid(for make short url)
+    3.create files for .env .gitignore index.js . then create folder for controllers , routing,database, model(created different folders because-follow mvc architecture )
+    4 create  server , create port number 
+    create database and connect the database using "dbconnectionstring"
+    create controllers for each task
+    set router for each task
+    
+test the each task (get , post , delete )in the help of "postman"
 
-Currently, two official plugins are available:
+connect the backend to the frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
