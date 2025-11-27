@@ -252,8 +252,8 @@ const deleteUrl = async (code) => {
 
           {/*----------------------- Frequently asked questions (FAQs) ---------------------*/}
           <section className='bg-slate-900'>
-            <div className="  md:mx-40 mx-10 md:h-100 ">
-              <h1 className=" text-3xl font-bold text-gray-900 mb-2">FAQs for TINYLINK</h1>
+            <div className="  md:mx-40 mx-10 md:h-100 pt-5 ">
+              <h1 className=" text-3xl text-white font-bold text-gray-900 m-2">FAQs for TINYLINK</h1>
               <div className="max-w-6xl sm:mx-auto my-10 bg-white border border-gray-500 rounded-2xl shadow-sm p-6">
                 {faqs.map((faq, index) => (
                   <div key={index} className="border-b border-gray-500 last:border-none">
