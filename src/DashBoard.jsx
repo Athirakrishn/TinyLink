@@ -57,7 +57,7 @@ function DashBoard() {
       }
     }
   } else {
-    alert("Enter a URL with long url");
+    alert("Enter a  long url . This is short ");
   }
 };
 
@@ -217,7 +217,7 @@ const deleteUrl = async (code) => {
                         <td className="px-4 py-2 text-gray-700 max-w-[120px] truncate whitespace-nowrap overflow-hidden">
                           {item.originalUrl}
                         </td>       
-                        
+
                         <td className="px-4 py-2 text-gray-700">{item.createdAt}</td>
 
                         <td className="px-4 py-2 flex gap-4">
