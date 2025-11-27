@@ -194,7 +194,6 @@ const deleteUrl = async (code) => {
                       <tr>
                         <th className="text-left px-4 py-2 font-semibold text-gray-700">Short Link</th>
                         <th className="text-left px-4 py-2 font-semibold text-gray-700">Original URL</th>
-                        <th className="text-left px-4 py-2 font-semibold text-gray-700">Total clicks</th>
                         <th className="text-left px-4 py-2 font-semibold text-gray-700">Created At</th>
 
                         <th className="text-left px-4 py-2 font-semibold text-gray-700">Actions</th>
@@ -217,7 +216,8 @@ const deleteUrl = async (code) => {
                   
                         <td className="px-4 py-2 text-gray-700 max-w-[120px] truncate whitespace-nowrap overflow-hidden">
                           {item.originalUrl}
-                        </td>        <td className="px-4 py-2 text-blue-600">{item.totalClicks}</td>
+                        </td>       
+                        
                         <td className="px-4 py-2 text-gray-700">{item.createdAt}</td>
 
                         <td className="px-4 py-2 flex gap-4">
